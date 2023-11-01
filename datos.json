@@ -1,0 +1,68 @@
+[
+  {
+    "codigoProducto": "01",
+    "nombreProducto": "Pantalon",
+    "inventarioProducto": 17,
+    "precioProducto": 45000
+  },
+  {
+    "codigoProducto": "02",
+    "nombreProducto": "Camisa",
+    "inventarioProducto": 6,
+    "precioProducto": 15000
+  },
+  {
+    "codigoProducto": "03",
+    "nombreProducto": "Medias",
+    "inventarioProducto": 14,
+    "precioProducto": 1000
+  },
+  {
+    "codigoProducto": "04",
+    "nombreProducto": "Chaqueta",
+    "inventarioProducto": 10,
+    "precioProducto": 35000
+  },
+  {
+    "codigoProducto": "05",
+    "nombreProducto": "Zapatos",
+    "inventarioProducto": 9,
+    "precioProducto": 75000
+  },
+  {
+    "codigoProducto": "06",
+    "nombreProducto": "Tenis",
+    "inventarioProducto": 1,
+    "precioProducto": 65500
+  },
+  {
+    "codigoProducto": "07",
+    "nombreProducto": "Celular",
+    "inventarioProducto": 16,
+    "precioProducto": 655000
+  },
+  {
+    "codigoProducto": "08",
+    "nombreProducto": "frutiño",
+    "inventarioProducto": 14,
+    "precioProducto": 700
+  },
+  {
+    "codigoProducto": "09",
+    "nombreProducto": "boka",
+    "inventarioProducto": 8,
+    "precioProducto": 700
+  },
+  {
+    "codigoProducto": "10",
+    "nombreProducto": "",
+    "inventarioProducto": 12,
+    "precioProducto": 1000
+  },
+  {
+    "codigoProducto": "11",
+    "nombreProducto": "jose",
+    "inventarioProducto": 13,
+    "precioProducto": 1300
+  }
+]
