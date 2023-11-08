@@ -1,12 +1,32 @@
-// se solicita al modulo de colores de node js
 require('colors');
 
-// Se crea una constante que importa la clase y la funcion del archivo de javaScript
-const { ProductosTienda, agregarProducto} = require('./proy_modules/carritoCompras')
+const { ProductosTienda, Producto, Cliente} = require('./proy_modules/caritoCompras')
+const{pausa, menu, agregarProducto, readLine} = require(`./proy_modules/funciones.js`)
 
 // Se declara una constante llamada main que contiene una funcion flecha
 const main = async () => {
+
+    let opt = ""
+    let productosTienda = null;     
+
+    console.clear();
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` + 
+    `~~~~~~~~~~~~~~~`);
+    console.log(`+                   Carrito de  compras                      `+ 
+    `         +`);
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` + 
+    `~~~~~~~~~~~~~~~`);
+ 
+    await pausa();
     
+    console.clear()
+
+    console.log(` menu `)
+  
+    console.clear()
+
+    console.log(`DATOS APERTURA TIENDA`);
+
 // Limbia la consola 
     console.clear();
 
@@ -15,39 +35,81 @@ const main = async () => {
     console.log(`*   Proyecto clases  *`);
     console.log('**********************');
 
-// se declara una nueva variable llamada productosTienda que es una instancia de clase
-    let productosTienda = new ProductosTienda;
 
 // se llama al metodo en la variable productosTienda
-    productosTienda.cargaArchivoProductos();
+// let opt;
 
-// se imprime un mensaje en la consola
-    console.log(`DATOS APERTURA TIENDA`.bgBlue);
+do {
+    console.clear();
+    console.log(` menu `);
+    console.clear();
 
-// Se llama al metodo mostrarProductos en la variable productosTienda
-    productosTienda.mostrarProductos();
+    opt = await menu();
 
-/*La variable productosTienda que llama a los valores de getListaProductos que 
-itera sobre la lsita de productos */
-    productosTienda.getListaProductos.forEach(producto => {
+    switch(opt) {
+        case '1':
+            console.clear();
+            productosTienda = new ProductosTienda;
+            productosTienda.cargaArchivoProductos(); 
+                await pausa(); 
+                break;
 
-// El producto va cambiando de valor entre numeros aleatorios 
-        producto.setInventarioProducto = Math.floor(Math.random() * (20 - 1) + 1);
-    });
+        case '2':
+            if (productosTienda === null) {
+                console.clear();
+                console.log("Error: Debes cargar el archivo de productos primero.");
+                await pausa();
 
-// se imprime un mensaje en la consola
-    console.log(`DATOS CIERRE TIENDA`.bgGreen);
+            } else {
+                console.clear();
+                console.log(`----- Hacer Copia de Seguridad -----`);
+                productosTienda.hacerCopiaDeSeguridad();
+                await pausa();
+            }
+            break;
+            case '3':
+                ;
+                break;
+            
+        case '4':
+            console.clear()
+            await agregarProducto(productosTienda); // Opción 4: Grabar Nuevos Productos
+            
+            productosTienda.grabaArchivoProductos();
+            await pausa();
+            break;
+        case '5':
+            console.clear();
+            console.log(`----- Eliminar producto -----`);
+             productosTienda.mostrarProductos();
+            await productosTienda.eliminarProducto();
+            await pausa();
+    break;
+        case '6':
+            console.clear();
+            const datos = new Cliente
 
-// en la variable productosTienda se llama al metodo mostrarProductos
-    productosTienda.mostrarProductos();
-
-/* el await de la funcion agregarProducto que hace una pausa y espera a que la funcion
-se termine para seguir con el codigo */
-    await agregarProducto(productosTienda);
-
-// la variable productos tienda requiere el metodo grabarArchivoProductos 
-    productosTienda.grabaArchivoProductos();
+            console.log(`----- Comprar productos -----`);
+            productosTienda.mostrarProductos()
+            await datos.comprar(productosTienda); // Añadir productosTienda como argumento
+            await pausa();
+            break;
+        case '7':
+            // Lógica para Imprimir Factura
+            break;
+        case '0':
+            console.log("Gracias por ingresar, que tenga un feliz dia");
+            break;
+        default:
+            if (opt >= '8') {
+                console.log(`Opción no válida. Por favor seleccione 1 a 7.`);
+            } else {
+                console.log(`Opción no válida. Por favor seleccione 0 a 7.`);
+            }
+    }
+    
+} while (opt !== '0');
 
 }
-
 main();
+
